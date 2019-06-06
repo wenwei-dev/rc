@@ -17,3 +17,5 @@
 [user]
 	email = dut.hww@gmail.com
 	name = Wenwei Huang
+[credential]
+	helper = cache --timeout=259200

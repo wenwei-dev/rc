@@ -37,6 +37,11 @@ noremap <C-n> :nohl<CR>
 "" vnoremap <C-n> :nohl<CR>
 "" inoremap <C-n> :nohl<CR>
 
+" NERDTree
+noremap <C-t> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '*'
+let g:NERDTreeDirArrowCollapsible = '\'
+
 " Run the current script in python console
 noremap <Leader>x <esc>:!python %<CR>
 noremap <Leader>s <esc>:!bash %<CR>
@@ -228,3 +233,4 @@ set completeopt=menuone,menu,longest,preview
 
 " jump to definition
 nnoremap <Leader>] <C-]>
+
