@@ -2,7 +2,7 @@
 
 #sudo apt install vim-nox-py2 # python2 support for vim
 
-cp -r .vim ~/.vim
+cp -r .vim/* ~/.vim/
 git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 git clone https://github.com/davidhalter/jedi-vim ~/.vim/bundle/jedi-vim
 git clone https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline
