@@ -2,6 +2,23 @@
 
 #sudo apt install vim-nox-py2 # python2 support for vim
 
+# vim 8.2 for ubuntu 16.04
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get update
+sudo apt-get install vim
+
+# set up color scheme
+mkdir -f ~/.vim/colors
+curl https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim -o ~/.vim/colors/PaperColor.vim
+
+# set up go IDE
+# https://tpaschalis.github.io/vim-go-setup/
+git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
+# then open Vim and execute :GoInstallBinaries
+git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
+git clone https://github.com/tpope/vim-fugitive.git ~/.vim/pack/dist/start/vim-fugitive # git status
+
+# set up python IDE
 cp -r .vim/* ~/.vim/
 git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 git clone https://github.com/davidhalter/jedi-vim ~/.vim/bundle/jedi-vim

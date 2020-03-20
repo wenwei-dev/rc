@@ -18,6 +18,7 @@ scriptencoding utf-8
 
 "" set pastetoggle=<F2>
 "" set clipboard=unnamed
+set autowrite
 
 
 " Mouse and backspace
@@ -38,14 +39,19 @@ noremap <C-n> :nohl<CR>
 "" inoremap <C-n> :nohl<CR>
 
 " NERDTree
-noremap <C-t> :NERDTreeToggle<CR>
+noremap <C-g> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '*'
 let g:NERDTreeDirArrowCollapsible = '\'
 
-" Run the current script in python console
-noremap <Leader>x <esc>:!python %<CR>
-noremap <Leader>s <esc>:!bash %<CR>
+" Execute the script
+autocmd FileType python noremap <Leader>x <esc>:!python %<CR>
+autocmd FileType sh noremap <Leader>x <esc>:!bash %<CR>
 nnoremap <Leader>. :CtrlPTag<CR>
+
+" required vim-go
+autocmd filetype go inoremap <buffer> . .<C-x><C-o>
+autocmd filetype go noremap <Leader>x <esc>:GoRun<CR>
+autocmd filetype go noremap <Leader>b <esc>:GoBuild<CR>
 
 " Quicksave command
 "" noremap <C-Z> :update<CR>
@@ -60,8 +66,6 @@ nnoremap <Leader>. :CtrlPTag<CR>
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
-map <c-j> <c-w>j
-map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
@@ -93,14 +97,14 @@ vnoremap > >gv  " better indentation
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
-color wombat256mod
-
+set background=dark " or background=light
+colorscheme PaperColor
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 filetype on
 filetype plugin on
-filetype indent off
+filetype indent on
 syntax on
 
 
@@ -130,7 +134,7 @@ set shiftwidth=4
 set shiftround
 set expandtab
 autocmd FileType cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Make search case insensitive
 set hlsearch
@@ -182,6 +186,10 @@ let g:jedi#completions_command = "<leader>/"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+
+
+let g:go_fmt_command = "goimports"    " Run goimports along gofmt on each save
+let g:go_auto_type_info = 1           " Automatically get signature/type info for object under cursor
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -236,15 +244,15 @@ nnoremap <Leader>] <C-]>
 
 
 "python with virtualenv support
-" if has('python')
-" py << EOF
-" import os.path
-" import sys
-" import vim
-" if 'VIRTUAL_ENV' in os.environ:
-"     project_base_dir = os.environ['VIRTUAL_ENV']
-"     sys.path.insert(0, project_base_dir)
-"     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"     execfile(activate_this, dict(__file__=activate_this))
-" EOF
-" endif
+if has('python')
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+endif
