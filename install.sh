@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt-get install vim
 
 # set up color scheme
-mkdir -f ~/.vim/colors
+mkdir -p ~/.vim/colors
 curl https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim -o ~/.vim/colors/PaperColor.vim
 
 # set up go IDE

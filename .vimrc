@@ -10,6 +10,8 @@
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
+set pastetoggle=<F10>
+
 scriptencoding utf-8
 
 " Better copy & paste
@@ -20,6 +22,7 @@ scriptencoding utf-8
 "" set clipboard=unnamed
 set autowrite
 
+" set rtp+=~/tabnine-vim
 
 " Mouse and backspace
 "" set mouse=a  " on OSX press ALT and click
@@ -44,8 +47,8 @@ let g:NERDTreeDirArrowExpandable = '*'
 let g:NERDTreeDirArrowCollapsible = '\'
 
 " Execute the script
-autocmd FileType python noremap <Leader>x <esc>:!python %<CR>
-autocmd FileType sh noremap <Leader>x <esc>:!bash %<CR>
+autocmd filetype python noremap <Leader>x <esc>:!python %<CR>
+autocmd filetype sh noremap <Leader>x <esc>:!bash %<CR>
 nnoremap <Leader>. :CtrlPTag<CR>
 
 " required vim-go
@@ -133,8 +136,12 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
-autocmd FileType cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd filetype cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype xml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype sh setlocal ts=4 sts=4 sw=4 expandtab
+autocmd filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 " Make search case insensitive
 set hlsearch
@@ -188,8 +195,14 @@ let g:jedi#popup_select_first = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
+" Go settings
 let g:go_fmt_command = "goimports"    " Run goimports along gofmt on each save
 let g:go_auto_type_info = 1           " Automatically get signature/type info for object under cursor
+let g:go_auto_sameids = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -219,13 +232,6 @@ hi Normal ctermbg=none
 hi NonText ctermbg=none
 
 
-" configure tags
-set tags+=~/.vim/tags/qt4
-set tags+=~/.vim/tags/stl
-set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/vtk
-set tags+=~/.vim/tags/sys
-
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
@@ -240,7 +246,7 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 
 " jump to definition
-nnoremap <Leader>] <C-]>
+" nnoremap <Leader>] <C-]>
 
 
 "python with virtualenv support
@@ -256,3 +262,14 @@ if 'VIRTUAL_ENV' in os.environ:
     execfile(activate_this, dict(__file__=activate_this))
 EOF
 endif
+
+
+augroup XML
+    autocmd!
+    autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+augroup END
+
+augroup HTML
+    autocmd!
+    autocmd FileType html setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+augroup END
