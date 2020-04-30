@@ -3,9 +3,10 @@
 #sudo apt install vim-nox-py2 # python2 support for vim
 
 # vim 8.2 for ubuntu 16.04
-sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:jonathonf/vim
 sudo apt-get update
-sudo apt-get install vim
+sudo apt-get install -y vim
 
 # set up color scheme
 mkdir -p ~/.vim/colors
