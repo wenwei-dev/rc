@@ -52,9 +52,9 @@ autocmd filetype sh noremap <Leader>x <esc>:!bash %<CR>
 nnoremap <Leader>. :CtrlPTag<CR>
 
 " required vim-go
-autocmd filetype go inoremap <buffer> . .<C-x><C-o>
-autocmd filetype go noremap <Leader>x <esc>:GoRun<CR>
-autocmd filetype go noremap <Leader>b <esc>:GoBuild<CR>
+" autocmd filetype go inoremap <buffer> . .<C-x><C-o>
+" autocmd filetype go noremap <Leader>x <esc>:GoRun<CR>
+" autocmd filetype go noremap <Leader>b <esc>:GoBuild<CR>
 
 " Quicksave command
 "" noremap <C-Z> :update<CR>
@@ -116,7 +116,7 @@ set number  " show line numbers
 set tw=79   " width of document (used by gd)
 " set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
+set colorcolumn=88
 highlight ColorColumn ctermbg=233
 
 
@@ -196,9 +196,9 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
 " Go settings
-let g:go_fmt_command = "goimports"    " Run goimports along gofmt on each save
-let g:go_auto_type_info = 1           " Automatically get signature/type info for object under cursor
-let g:go_auto_sameids = 1
+" let g:go_fmt_command = "goimports"    " Run goimports along gofmt on each save
+" let g:go_auto_type_info = 1           " Automatically get signature/type info for object under cursor
+" let g:go_auto_sameids = 1
 " let g:go_highlight_types = 1
 " let g:go_highlight_fields = 1
 " let g:go_highlight_functions = 1
