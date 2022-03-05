@@ -22,7 +22,7 @@ curl https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/
 # set up python IDE
 cp -r .vim/* ~/.vim/
 git clone --depth=1 https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-git clone --depth=1 https://github.com/davidhalter/jedi-vim ~/.vim/bundle/jedi-vim
+git clone --recursive --depth=1 https://github.com/davidhalter/jedi-vim ~/.vim/bundle/jedi-vim
 git clone --depth=1 https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline
 git clone --depth=1 https://github.com/pedrohdz/vim-yaml-folds ~/.vim/bundle/vim-yaml-folds
 git clone --depth=1 https://github.com/scrooloose/nerdtree ~/.vim/bundle/nerdtree
