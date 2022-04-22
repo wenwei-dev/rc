@@ -19,3 +19,10 @@
 	name = Wenwei Huang
 [credential]
 	helper = cache --timeout=259200
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[url "https://github.com/"]
+	insteadOf = git://github.com/
