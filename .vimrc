@@ -6,6 +6,27 @@
 " Note to myself:
 " DO NOT USE <C-z> FOR SAVING WHEN PRESENTING!
 " ============================================
+"
+
+" Install Vundle https://github.com/VundleVim/Vundle.vim
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'rust-lang/rust.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Placing let g:rustfmt_autosave = 1 in your ~/.vimrc will enable automatic running of :RustFmt when you save a buffer.
+let g:rustfmt_autosave = 1
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %

@@ -27,8 +27,10 @@ git clone --depth=1 https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/
 git clone --depth=1 https://github.com/pedrohdz/vim-yaml-folds ~/.vim/bundle/vim-yaml-folds
 git clone --depth=1 https://github.com/scrooloose/nerdtree ~/.vim/bundle/nerdtree
 
-# set up Rust IDE
-git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+# install Vundle bundle manager
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# install Vundle plugins
+vim +PluginInstall +qall
 
 cp -r .vimrc ~/
 cp -r .gitconfig ~/
