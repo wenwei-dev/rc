@@ -164,6 +164,9 @@ autocmd filetype xml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd filetype sh setlocal ts=4 sts=4 sw=4 expandtab
 autocmd filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 
+" https://learnvimscriptthehardway.stevelosh.com/chapters/12.html
+au BufRead,BufNewFile *.metta set filetype=scheme
+
 " Make search case insensitive
 set hlsearch
 set incsearch
